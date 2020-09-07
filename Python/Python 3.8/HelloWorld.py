@@ -1,6 +1,6 @@
 """ A Hello World Function to test AWS Lambda."""
 
 
-def hello_world():
+def lambda_handler(event, context):
     """ This function returns the string 'Hello World!'"""
-    return "Hello World!"
+    print("Hello World!")

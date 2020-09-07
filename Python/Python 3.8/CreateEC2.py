@@ -4,7 +4,7 @@
 import boto3
 
 
-def create_ecc_instance():
+def lambda_handler(event, context):
 
     # Create EC2 Connection
 
@@ -12,11 +12,12 @@ def create_ecc_instance():
 
     # Create a new ec2 instance.
 
-    return ec2.create_instances(
+    ec2.create_instances(
         ImageId='ami-04137ed1a354f54c4',
         MinCount=1,
         MaxCount=1,
         InstanceType='t2.micro',
         KeyName='asbandia-key-pair',
-        AvailabilityZone='eu-west-1a'
+        Placement={'AvailabilityZone': 'eu-west-1a'}
     )
+
