@@ -20,4 +20,3 @@ def lambda_handler(event, context):
         KeyName='asbandia-key-pair',
         Placement={'AvailabilityZone': 'eu-west-1a'}
     )
-
