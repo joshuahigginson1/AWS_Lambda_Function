@@ -9,7 +9,7 @@ password = getenv("RDS_ROOT_PASS")
 db_name = getenv("RDS_DB_NAME")
 
 
-def update_events():
+def update_events(event):
     print("Updating the user...")
 
     connection = pymysql.connect(host=rds_host,

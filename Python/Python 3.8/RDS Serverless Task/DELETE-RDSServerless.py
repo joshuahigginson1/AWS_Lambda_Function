@@ -9,7 +9,7 @@ password = getenv("RDS_ROOT_PASS")
 db_name = getenv("RDS_DB_NAME")
 
 
-def update_events():
+def delete_events(event):
     print("Deleting the user...")
 
     connection = pymysql.connect(host=rds_host,
@@ -29,4 +29,4 @@ def update_events():
 
 
 def lambda_handler(event, context):
-    return update_events()
+    return delete_events()
