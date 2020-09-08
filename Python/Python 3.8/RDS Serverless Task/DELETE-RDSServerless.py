@@ -20,7 +20,7 @@ def update_events():
 
     with connection.cursor() as cursor:
 
-        cursor.execute("""DELETE FROM test WHERE id=%s """ % (event['id']))
+        cursor.execute("""DELETE FROM test WHERE id=%s""" % (event['id']))
 
         connection.commit()
         cursor.close()
