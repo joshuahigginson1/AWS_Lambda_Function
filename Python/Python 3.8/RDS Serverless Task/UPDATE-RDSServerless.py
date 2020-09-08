@@ -20,7 +20,7 @@ def update_events(event):
 
     with connection.cursor() as cursor:
 
-        cursor.execute("""UPDATE test SET name= '%s' WHERE id=%s""" % (event['id'], event['name']))
+        cursor.execute("""UPDATE test SET name='%s' WHERE id=%s""" % (event['name'], event['id']))
 
         connection.commit()
         cursor.close()
