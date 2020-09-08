@@ -1,4 +1,4 @@
-""" A Lambda function to connect to an RDS Instance. """
+""" A Lambda function to READ from an RDS Instance. """
 
 import pymysql
 from os import getenv

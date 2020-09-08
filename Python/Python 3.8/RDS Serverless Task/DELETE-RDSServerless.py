@@ -1,4 +1,4 @@
-""" A Lambda function to ADD data to an RDS Instance. """
+""" A Lambda function to DELETE data in an RDS Instance. """
 
 import pymysql
 from os import getenv
@@ -9,9 +9,9 @@ password = getenv("RDS_ROOT_PASS")
 db_name = getenv("RDS_DB_NAME")
 
 
-def save_events(event):
-    print(f"Adding User {event['name']}...")
-    result = []
+def update_events():
+    print("Deleting the user...")
+
     connection = pymysql.connect(host=rds_host,
                                  user=username,
                                  password=password,
@@ -19,17 +19,14 @@ def save_events(event):
                                  connect_timeout=5)
 
     with connection.cursor() as cursor:
-        cursor.execute("""insert into test (id, name) values(%s, '%s')""" % (event['id'], event['name']))
-        cursor.execute("""select * from test""")
-        for row in cursor:
-            result.append(list(row))
+
+        cursor.execute("""DELETE FROM test WHERE id=%s """ % (event['id']))
 
         connection.commit()
         cursor.close()
 
-        print("Data from RDS...")
-        print(result)
+    print(f"User {event['id']} deleted.")
 
 
 def lambda_handler(event, context):
-    save_events(event)
+    return update_events()
