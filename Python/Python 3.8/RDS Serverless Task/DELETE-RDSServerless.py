@@ -29,4 +29,4 @@ def delete_events(event):
 
 
 def lambda_handler(event, context):
-    return delete_events()
+    return delete_events(event)

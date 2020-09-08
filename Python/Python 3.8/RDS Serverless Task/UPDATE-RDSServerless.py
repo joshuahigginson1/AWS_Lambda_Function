@@ -29,4 +29,4 @@ def update_events(event):
 
 
 def lambda_handler(event, context):
-    return update_events()
+    return update_events(event)
